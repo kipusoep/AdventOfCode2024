@@ -15,6 +15,7 @@ foreach (var line in input)
 }
 
 Part1(leftNumbers.ToList(), rightNumbers.ToList());
+Console.WriteLine();
 Part2(leftNumbers.ToList(), rightNumbers.ToList());
 
 void Part1(List<int> leftNumbers, List<int> rightNumbers)

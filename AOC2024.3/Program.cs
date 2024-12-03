@@ -5,6 +5,7 @@ var input = (await File.ReadAllLinesAsync("input.txt")).ToList();
 var regex = new Regex(@"mul\((?<digit1>\d{1,3}),(?<digit2>\d{1,3})\)", RegexOptions.Compiled);
 
 Part1();
+Console.WriteLine();
 Part2();
 
 void Part1()
