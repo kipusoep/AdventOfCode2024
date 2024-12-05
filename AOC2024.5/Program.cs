@@ -59,23 +59,15 @@ void Part2()
     Console.WriteLine("Part 2 total: {0}", total);
 }
 
-/// <summary>
-/// Compares two page numbers based on the rules.
-/// </summary>
 public class RulesComparer : IComparer<int>
 {
     private readonly List<(int, int)> _rules;
 
-    /// <summary>
-    /// Constructor for RulesComparer.
-    /// </summary>
-    /// <param name="rules">The rules.</param>
     public RulesComparer(List<(int, int)> rules)
     {
         _rules = rules;
     }
 
-    /// <inheritdoc />
     public int Compare(int x, int y)
     {
         if (_rules.Contains((x, y)))
