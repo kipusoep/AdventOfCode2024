@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2024.6", "AOC2024.6\AOC2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2024.7", "AOC2024.7\AOC2024.7.csproj", "{717D7633-F955-476C-B0F2-F870888E0DE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2024.8", "AOC2024.8\AOC2024.8.csproj", "{BEA1A676-6639-4AF8-99C9-AF091F301DCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{FFA94ED6-37CA-45B6-8DF3-F4181497EC49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{717D7633-F955-476C-B0F2-F870888E0DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{717D7633-F955-476C-B0F2-F870888E0DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{717D7633-F955-476C-B0F2-F870888E0DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA1A676-6639-4AF8-99C9-AF091F301DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA1A676-6639-4AF8-99C9-AF091F301DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA1A676-6639-4AF8-99C9-AF091F301DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA1A676-6639-4AF8-99C9-AF091F301DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA94ED6-37CA-45B6-8DF3-F4181497EC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA94ED6-37CA-45B6-8DF3-F4181497EC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA94ED6-37CA-45B6-8DF3-F4181497EC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA94ED6-37CA-45B6-8DF3-F4181497EC49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
