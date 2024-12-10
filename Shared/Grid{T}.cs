@@ -5,6 +5,7 @@
 namespace Shared;
 
 public class Grid<T>(int width, int height)
+    where T : struct
 {
     public int Width { get; set; } = width;
     public int Height { get; set; } = height;
@@ -84,9 +85,43 @@ public class Grid<T>(int width, int height)
         return Data[IndexOf(x, y)];
     }
 
-    public T Get(Point p)
+    public T? Get(Point p)
     {
-        return Data[IndexOf(p)];
+        if (IsInBounds(p))
+        {
+            return Data[IndexOf(p)];
+        }
+
+        return null;
+    }
+
+    public List<Point> GetNeighboursByValue(Point p, T value)
+    {
+        var neighbours = new List<Point>();
+
+        var pointAbove = p with { Y = p.Y - 1 };
+        var pointRight = p with { X = p.X + 1 };
+        var pointBelow = p with { Y = p.Y + 1 };
+        var pointLeft = p with { X = p.X - 1 };
+
+        if (Get(pointAbove) != null && Get(pointAbove)!.Equals(value))
+        {
+            neighbours.Add(pointAbove);
+        }
+        if (Get(pointRight) != null && Get(pointRight)!.Equals(value))
+        {
+            neighbours.Add(pointRight);
+        }
+        if (Get(pointBelow) != null && Get(pointBelow)!.Equals(value))
+        {
+            neighbours.Add(pointBelow);
+        }
+        if (Get(pointLeft) != null && Get(pointLeft)!.Equals(value))
+        {
+            neighbours.Add(pointLeft);
+        }
+
+        return neighbours;
     }
 
     public static Grid<T> Parse(string text, Func<char, T> converter)
