@@ -8,7 +8,7 @@ Part2();
 
 void Part1()
 {
-    Console.WriteLine("Part 2 stone count: {0}", GetStoneCount(25));
+    Console.WriteLine("Part 1 stone count: {0}", GetStoneCount(25));
 }
 
 void Part2()
