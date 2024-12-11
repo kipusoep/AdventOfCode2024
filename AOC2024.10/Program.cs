@@ -4,7 +4,7 @@ var input = await File.ReadAllTextAsync("input.txt");
 
 var grid = Grid<int>.Parse(input, c => c == '.' ? -1 : int.Parse(c.ToString()));
 
-//Part1();
+Part1();
 Console.WriteLine();
 Part2();
 
