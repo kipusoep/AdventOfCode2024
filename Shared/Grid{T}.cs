@@ -2,9 +2,11 @@
 
 // ReSharper disable MemberCanBePrivate.Global
 
+using System.Collections;
+
 namespace Shared;
 
-public class Grid<T>(int width, int height)
+public class Grid<T>(int width, int height) : IEnumerable<Point>
     where T : struct
 {
     public int Width { get; set; } = width;
@@ -72,12 +74,7 @@ public class Grid<T>(int width, int height)
 
     public bool IsInBounds(int x, int y)
     {
-        if (x < 0) return false;
-        if (x >= Width) return false;
-        if (y < 0) return false;
-        if (y >= Height) return false;
-
-        return true;
+        return x >= 0 && x < Width && y >= 0 && y < Height;
     }
 
     public T Get(int x, int y)
@@ -95,33 +92,25 @@ public class Grid<T>(int width, int height)
         return null;
     }
 
-    public List<Point> GetNeighboursByValue(Point p, T value)
+    public IEnumerable<Point> GetNeighbours(Point p)
     {
-        var neighbours = new List<Point>();
+        yield return p with { X = p.X - 1 }; // Left
+        yield return p with { X = p.X + 1 }; // Right
+        yield return p with { Y = p.Y - 1 }; // Up
+        yield return p with { Y = p.Y + 1 }; // Down
+    }
 
-        var pointAbove = p with { Y = p.Y - 1 };
-        var pointRight = p with { X = p.X + 1 };
-        var pointBelow = p with { Y = p.Y + 1 };
-        var pointLeft = p with { X = p.X - 1 };
-
-        if (Get(pointAbove) != null && Get(pointAbove)!.Equals(value))
+    public IEnumerable<Point> GetNeighboursByValue(Point p)
+    {
+        var value = Get(p);
+        var neighbours = GetNeighbours(p).ToList();
+        foreach (var neighbour in neighbours)
         {
-            neighbours.Add(pointAbove);
+            if (Get(neighbour) != null && Get(neighbour)!.Equals(value))
+            {
+                yield return neighbour;
+            }
         }
-        if (Get(pointRight) != null && Get(pointRight)!.Equals(value))
-        {
-            neighbours.Add(pointRight);
-        }
-        if (Get(pointBelow) != null && Get(pointBelow)!.Equals(value))
-        {
-            neighbours.Add(pointBelow);
-        }
-        if (Get(pointLeft) != null && Get(pointLeft)!.Equals(value))
-        {
-            neighbours.Add(pointLeft);
-        }
-
-        return neighbours;
     }
 
     public static Grid<T> Parse(string text, Func<char, T> converter)
@@ -145,5 +134,23 @@ public class Grid<T>(int width, int height)
         }
 
         return grid;
+    }
+
+    /// <inheritdoc />
+    public IEnumerator<Point> GetEnumerator()
+    {
+        for (var x = 0; x < Width; x++)
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                yield return new Point(x, y);
+            }
+        }
+    }
+
+    /// <inheritdoc />
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

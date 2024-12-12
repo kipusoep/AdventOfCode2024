@@ -41,7 +41,7 @@ void ResolvePaths(ICollection<Point> collection, HashSet<Point> trailendings)
     foreach (var point in collection)
     {
         var newValue = grid.Get(point) + 1;
-        var neighbours = grid.GetNeighboursByValue(point, newValue!.Value);
+        var neighbours = grid.GetNeighboursByValue(point).ToList();
 
         if (newValue != 9)
         {
@@ -62,7 +62,7 @@ void ResolvePathCounts(ICollection<Point> collection, ref int sum)
     foreach (var point in collection)
     {
         var newValue = grid.Get(point) + 1;
-        var neighbours = grid.GetNeighboursByValue(point, newValue!.Value);
+        var neighbours = grid.GetNeighboursByValue(point).ToList();
 
         if (newValue != 9)
         {
